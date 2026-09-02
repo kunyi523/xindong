@@ -1,0 +1,14 @@
+{
+  "name": "xindong",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node test.mjs",
+    "//": "deploy 里先跑建表再发布。迁移用的是绑定名 DB 而不是库名——按钮给你开的库可能叫别的名字",
+    "deploy": "wrangler d1 migrations apply DB --remote && wrangler deploy"
+  },
+  "devDependencies": {
+    "sql.js": "^1.13.0",
+    "wrangler": "^4.0.0"
+  }
+}

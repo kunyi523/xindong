@@ -1,0 +1,17 @@
+name = "xindong"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+# 这个绑定必须留在这里、而且带一个占位的 database_id：
+# 「Deploy to Cloudflare」那个按钮靠读这段配置来判断要给你开哪些资源，
+# 它会自动建一个 D1 库，并把真正的 id 写回你自己那份仓库里。
+[[d1_databases]]
+binding = "DB"
+database_name = "xindong"
+database_id = "09681607-3b3c-4f66-8005-58acf3bc5d11"
+migrations_dir = "migrations"
+
+[vars]
+# 给 IP 做哈希用的盐。IP 本身不入库，只存哈希、只留一小时。
+# 部署完最好换一串自己的：wrangler secret put IP_SALT
+IP_SALT = "change-me-after-deploy"
